@@ -3,11 +3,15 @@ import './App.css';
 import { HeaderNavbar } from './Component/Header/HeaderNavbar';
 import { HeaderSearchPanel } from './Component/Header/HeaderSearchPanel';
 import Header from './Component/Header/Header';
+import Recommend from './Component/Recommend/Recommend';
 
 function App() {
   return (
     <div>
-      <Header/>
+      <div style={{marginBottom:10}}>
+        <Header/>
+      </div>
+      <Recommend/>
     </div>
   );
 }
