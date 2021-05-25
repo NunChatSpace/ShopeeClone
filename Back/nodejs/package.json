@@ -1,0 +1,22 @@
+{
+  "name": "nodejs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "test.js",
+  "scripts": {
+    "start": "node ./src/server.js",
+    "test": "mocha './test/*/*.js' --recursive --exit"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "chai": "^4.3.4",
+    "chai-http": "^4.3.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "mocha": "^8.4.0",
+    "mongodb": "^3.6.8",
+    "mongoose": "^5.12.11",
+    "request": "^2.88.2"
+  }
+}

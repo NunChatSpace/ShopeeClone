@@ -1,0 +1,13 @@
+.arrow {
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    display: flex;
+    justify-content:center;
+    align-items:center;
+    box-shadow:rgb(0 0 0 / 12%) 0px 1px 12px 0px;
+}
+
+.horizontal-menu:hover .arrow {
+    transform: scale(2,2);
+}
