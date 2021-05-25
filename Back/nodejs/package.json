@@ -5,7 +5,7 @@
   "main": "test.js",
   "scripts": {
     "start": "node ./src/server.js",
-    "test": "mocha './test/*/*.js' --recursive --exit"
+    "test": "mocha './test/*/*.js' --recursive --timeout 5000 --exit"
   },
   "author": "",
   "license": "ISC",

@@ -1,7 +1,6 @@
 
 const express = require('express')
 const mongoose = require('mongoose')
-const recommendMenu = require('../src/Database/recommendMenu')
 
 const app = require('./app')
 const PORT = process.env.PORT || 8080

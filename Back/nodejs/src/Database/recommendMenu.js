@@ -1,8 +1,7 @@
 const mongoose = require('mongoose');
-const data = require('./data/recommendMenu.json');
-const recommendMenuSchema = require('../models/recommendModel');
+const recommendModel = require('../models/recommendModel');
 
-const model = mongoose.model("recommendMenu", recommendMenuSchema);
+const model = mongoose.model("recommendMenu", recommendModel);
 module.exports = {
     model
 };

@@ -1,33 +1,31 @@
 const { assert } = require('chai')
 const { after, before, describe, it } = require('mocha')
 
-const { initData, getRecommendMenu, clearData } = require('../../src/controllers/recommendMenu.controller')
+const { initRecommendData, getRecommendMenu, clearRecommendData } = require('../../src/controllers/recommendMenu.controller')
 
 describe('Test recommendMenu.controller', () => {
-    before(done = async() => {
-        await clearData()
-        done();
+    before(async () => {
+        await clearRecommendData();
     })
 
     describe('init data', () => {
-        it('Should contains 24 inserted data', done = async () => {
-            var result = await initData();
+        it('Should contains 10 inserted data', done = async () => {
+            var result = await initRecommendData();
             assert.isTrue(result.result.ok == 1, "result.result.ok = " + result.result.ok);
-            assert.isTrue(result.result.n == 24, "result.result.n = " + result.result.n);
+            assert.isTrue(result.result.n == 10, "result.result.n = " + result.result.n);
             done();
         })
     })
 
-    after(done => {
-        done();
+    after(async () => {
+        await clearRecommendData();
     })
 });
 
 describe('Test recommendMenu.controller', () => {
-    before(done = async() => {
-        await clearData()
-        await initData()
-        done();
+    before(async() => {
+        await clearRecommendData();
+        await initRecommendData();
     })
 
     describe('getRecommendMenu', () => {
@@ -38,7 +36,7 @@ describe('Test recommendMenu.controller', () => {
         })
     })
 
-    after(done => {
-        done();
+    after(async() => {
+        await clearRecommendData();
     })
 })

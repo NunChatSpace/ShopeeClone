@@ -1,12 +1,12 @@
-const { model } = require('../Database/recommendMenu')
-const data = require('../Database/data/recommendMenu.json')
+const { model } = require('../Database/categoryMenu')
+const data = require('../Database/data/categoryMenu.json')
 
-const getRecommendMenu = async () => {
+const getCategoryMenu = async () => {
     var cursor = await model.find();
     return cursor;
 }
 
-const initRecommendData = async () => {
+const initCategoryData = async () => {
     var promise = new Promise((resolve, reject) => {
         model.collection.insertMany(data, function (err, docs) {
             if (err) {
@@ -20,15 +20,16 @@ const initRecommendData = async () => {
 }
 
 // Setting environment for test
-const clearRecommendData = async () => {
-    var val = await getRecommendMenu();
+const clearCategoryData = async () => {
+    var val = await getCategoryMenu();
+    
     if (val) {
         model.collection.deleteMany({});
     }
 }
 
 module.exports = {
-    getRecommendMenu,
-    initRecommendData,
-    clearRecommendData
+    getCategoryMenu,
+    initCategoryData,
+    clearCategoryData
 }
