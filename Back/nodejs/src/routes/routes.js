@@ -20,7 +20,6 @@ router.get('/init', (req, res) => {
 
 router.get('/getrecommendmenu', async (req, res)=> {
     var dat = await recommendController.getRecommendMenu();
-    console.log(dat)
     res.status(200).json({
         status: "Success",
         count: dat.length,
