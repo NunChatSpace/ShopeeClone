@@ -1,6 +1,7 @@
 const express = require('express');
 const categoryController = require('../controllers/categoryMenu.controller')
 const recommendController = require('../controllers/recommendMenu.controller')
+const advertisementController = require('../controllers/advertisement.controller')
 const router = express.Router();
 
 router.get('/', (req, res) => {
@@ -14,6 +15,7 @@ router.get('/', (req, res) => {
 router.get('/init', (req, res) => {
     categoryController.initCategoryData();
     recommendController.initRecommendData();
+    advertisementController.initAdvertisementData();
     res.status(200).json({
         status: "Success"
     })
@@ -31,6 +33,15 @@ router.get('/category', async (req, res)=> {
 
 router.get('/recommend', async (req, res)=> {
     var dat = await recommendController.getRecommendMenu();
+    res.status(200).json({
+        status: "Success",
+        count: dat.length,
+        data: dat
+    });
+})
+
+router.get('/advertisement', async (req, res)=> {
+    var dat = await advertisementController.getAdvertisement();
     res.status(200).json({
         status: "Success",
         count: dat.length,

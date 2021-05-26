@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 import ScrollMenu from 'react-horizontal-scrolling-menu';
 import Category from './Category';
 import './Arrow.css';
+import { connect } from 'react-redux';
+import { loadCategory } from '../../../Redux/actions/category.action';
 
 const MenuItem = ({ cmp1, cmp2 }) => {
     if (cmp2.image === "" && cmp2.text === "") {
@@ -37,6 +39,7 @@ const MenuItem = ({ cmp1, cmp2 }) => {
 
 // const component = Array.from(Array(this.props.componentsInfo.length)).map((x, i) => this.toCategory(i, this.props.componentsInfo))
 const Menu = (list) => {
+    console.log(list)
     var components = list.map((el, i) => {
         if (i + 1 == list.length) {
             return (<MenuItem key={i} cmp1={el} cmp2={{ image: "", text: "" }} />)
@@ -69,7 +72,7 @@ const Arrow = ({ text, className }) => {
 const ArrowLeft = Arrow({ className: 'arrow-prev arrow', text: '<' });
 const ArrowRight = Arrow({ className: 'arrow-next arrow', text: '>' });
 
-export default class Categories extends Component {
+export class Categories extends Component {
 
     constructor(props) {
         super(props)
@@ -77,6 +80,10 @@ export default class Categories extends Component {
             selected: 0,
         }
     }
+
+    componentDidMount() {
+        this.props.loadCategory();
+      }
 
     onSelect = key => {
         this.setState({
@@ -107,7 +114,10 @@ export default class Categories extends Component {
             slowdownFactor: 10,
         }
         // const component = Array.from(Array(this.props.componentsInfo.length)).map((x, i) => this.toCategory(i, this.props.componentsInfo))
-        const menu = Menu(this.props.componentsInfo, selected)
+        var menu = Menu([], '0')
+        if (this.props.categoryReducer.payload) {
+            menu = Menu(this.props.categoryReducer.payload.data.data, selected)
+        }
         return (
             <Container>
                 <Grid container direction="row" alignItems="center" spacing={1}>
@@ -145,3 +155,11 @@ export default class Categories extends Component {
         );
     }
 }
+
+const mapStateToProps = ({ categoryReducer }) => ({ categoryReducer });
+
+const mapDispatchToProps = {
+    loadCategory
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Categories);

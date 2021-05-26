@@ -54,6 +54,20 @@ describe('Test Routing with normal flow', () => {
         })
     })
 
+    describe('GET /api/advertisement', () => {
+        it('it should have message "Success"', done => {
+            chai
+            .request(server)
+            .get('/api/advertisement')
+            .end((req, res) => {
+                res.should.have.status(200)
+                res.body.should.have.property('status').eql('Success')
+                res.body.should.have.property('count')
+                done()
+            })
+        })
+    })
+
     after(done => {
         // Do something here after test
         done()

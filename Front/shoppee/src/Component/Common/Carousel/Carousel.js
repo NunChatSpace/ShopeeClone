@@ -8,8 +8,7 @@ export default class Carousel extends Component {
         super(props);
         this.state = {
             index: 0,
-            intervalID: 0,
-            children: props.children
+            intervalID: 0
         }
     }
 
@@ -24,7 +23,7 @@ export default class Carousel extends Component {
     }
 
     next = () => {
-        if (this.state.index < (this.state.children.length - 1)) {
+        if (this.state.index < (this.props.children.length - 1)) {
             this.setState({
                 index: this.state.index + 1
             })
@@ -44,18 +43,19 @@ export default class Carousel extends Component {
         }
         else {
             this.setState({
-                index: this.state.children.length - 1
+                index: this.props.children.length - 1
             })
         }
     }
 
     render() {
+        console.log("render Carousel", this.state)
         return (
             <div className="carousel-container">
                 <div className="carousel-wrapper">
                     <div className="carousel-content-wrapper">
                         <div className="carousel-content" style={{ transform: `translate(-${this.state.index * 100}%)` }}>
-                            {this.state.children}
+                            {this.props.children}
                         </div>
                     </div>
                     <button className="left-arrow" onClick={this.prev}>
@@ -65,7 +65,7 @@ export default class Carousel extends Component {
                         <img src={right} />
                     </button>
                     <div className="carousel-dot-container">
-                        {Array.from(Array(this.state.children.length)).map((x, index) => <CarouselDot value={index} activeIndex={this.state.index} />)}
+                        {Array.from(Array(this.props.children.length)).map((x, index) => <CarouselDot value={index} activeIndex={this.state.index} />)}
                     </div>
                 </div>
             </div>

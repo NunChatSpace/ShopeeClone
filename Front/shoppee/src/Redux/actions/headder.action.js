@@ -15,4 +15,4 @@ export const setHeaderStateToError = () => ({
 export const setHeaderStateToSearch = (payload) => ({
     type: HEADER_SEARCH,
     payload
-})
+}) 

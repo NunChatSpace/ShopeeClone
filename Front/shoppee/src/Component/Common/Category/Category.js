@@ -18,9 +18,9 @@ export default class Category extends Component {
 
         return (
             <a onClick={onClick}>
-                <Grid container direction="row" alignItems="center" justify="center" spacing={1} style={this.props.style? this.props.style: {}}>
+                <Grid container direction="row" alignItems="center" justify="center" spacing={1} style={this.props.style ? this.props.style : {}}>
                     <Grid item xs={8}>
-                        <img src={this.props.image} style={imgStyle} />
+                        <img src={this.props.image} style={imgStyle} alt={this.props.text} />
                     </Grid>
                     <Grid item xs={12}>
                         <label style={labelStyle}>{this.props.text}</label>

@@ -20,68 +20,67 @@ import iconShopeeCoin from '../../assets/icon/icon-shopee-coin.png';
 import iconShopeeMart from '../../assets/icon/icon-shopee-mart.png';
 import Carousel from '../Common/Carousel/Carousel';
 import Category from '../Common/Category/Category';
+import { connect } from 'react-redux';
+import { loadAdvertisement } from '../../Redux/actions/advertisement.action';
+import { loadRecommend } from '../../Redux/actions/recommend.action';
 
+export class Recommend extends Component {
 
-export default class Recommend extends Component {
+  componentDidMount() {
+    this.props.loadAdvertisement();
+    this.props.loadRecommend();
+  }
+
+  toAdvertisement = (data, imgStyle) => {
+    return (<img src={data.image} style={imgStyle} alt={data.text} />)
+  }
+
+  toRecommend = (data) => {
+    return (
+      <Grid item xs>
+        <Category image={data.image} text={data.text} />
+      </Grid>
+    )
+  }
+
   render() {
     const imgStyle = {
       maxWidth: "100%", maxHeight: "100%"
     }
+
+    var recommendData = []
+    var advertisementData = []
+
+    if (this.props.recommendReducer.payload) {
+      recommendData = this.props.recommendReducer.payload.data.data
+    }
+
+    if (this.props.advertisementReducer.payload) {
+      advertisementData = this.props.advertisementReducer.payload.data.data
+    }
+
+    console.log(recommendData, advertisementData)
     return (
       <Container>
         <Grid container direction="row" alignItems="center" spacing={1}>
           <Grid item xs={12} sm={8}>
             <Carousel>
-              <img src={ad_1} style={imgStyle} alt={"ad_1"}/>
-              <img src={ad_2} style={imgStyle} alt={"ad_2"}/>
-              <img src={ad_3} style={imgStyle} alt={"ad_3"}/>
-              <img src={ad_4} style={imgStyle} alt={"ad_4"}/>
-              <img src={ad_5} style={imgStyle} alt={"ad_5"}/>
-              <img src={ad_6} style={imgStyle} alt={"ad_6"}/>
+              {Array.from(Array(advertisementData.length)).map((x, i) => this.toAdvertisement(advertisementData[i], imgStyle))}
             </Carousel>
           </Grid>
           <Grid item xs={12} sm={4}>
             <Grid container direction="row" alignItems="center">
               <Grid item xs={6} sm={12}>
-                <img src={ad_7} style={imgStyle} alt={"ad_7"} />
+                <img src={"http://localhost:8080/static/advertisement/ad_7.jpg"} style={imgStyle} alt={"ad_7"} />
               </Grid>
               <Grid item xs={6} sm={12}>
-                <img src={ad_8} style={imgStyle} alt={"ad_8"} />
+                <img src={"http://localhost:8080/static/advertisement/ad_8.jpg"} style={imgStyle} alt={"ad_8"} />
               </Grid>
             </Grid>
           </Grid>
           <Grid item xs={12}>
             <Grid container direction="row" alignItems="center" spacing={2}>
-              <Grid item xs>
-                <Category image={iconShippingFree} text={"โค้ดส่งฟรี*"} />
-              </Grid>
-              <Grid item xs>
-                <Category image={iconDiscountBrand} text={"แบรนด์ถูกชัวร์"} />
-              </Grid>
-              <Grid item xs>
-                <Category image={iconElectronics} text={"สินค้าอิเล็กทรอนิกส์"} />
-              </Grid>
-              <Grid item xs>
-                <Category image={iconGamerZone} text={"Gamer Zone"} />
-              </Grid>
-              <Grid item xs>
-                <Category image={iconFashionZone} text={"Fashion Zone Free Shipping"} />
-              </Grid>
-              <Grid item xs>
-                <Category image={iconShopeeMart} text={"Shopee Mart 100 Coins*"} />
-              </Grid>
-              <Grid item xs>
-                <Category image={iconShopeeCoin} text={"แลกรางวัล Shopee Coin"} />
-              </Grid>
-              <Grid item xs>
-                <Category image={iconAllVoucher} text={"โค้ดส่วนลดพิเศษ"} />
-              </Grid>
-              <Grid item xs>
-                <Category image={iconPartnerShip} text={"Partner Provileges"} />
-              </Grid>
-              <Grid item xs>
-                <Category image={iconCampaings} text={"โปรโมชั่นพิเศษ"} />
-              </Grid>
+              {Array.from(Array(recommendData.length)).map((x, i) => this.toRecommend(recommendData[i]))}
             </Grid>
           </Grid>
         </Grid>
@@ -89,3 +88,12 @@ export default class Recommend extends Component {
     );
   }
 }
+
+const mapStateToProps = ({ recommendReducer, advertisementReducer }) => ({ recommendReducer, advertisementReducer });
+
+const mapDispatchToProps = {
+  loadRecommend,
+  loadAdvertisement
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Recommend);

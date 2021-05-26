@@ -1,11 +1,25 @@
-// TYPE
+// STATE TYPE
 export const HEADER_CLICKED = 'HEADER_CLICKED';
 export const HEADER_ERROR = 'HEADER_ERROR';
 export const HEADER_SEARCH = 'HEADER_SEARCH';
 
+export const CATEGORY_FETCHING = 'CATEGORY_FETCHING';
+export const CATEGORY_ERROR = 'CATEGORY_ERROR';
+export const CATEGORY_SUCCESS = 'CATEGORY_SUCCESS';
 
-// export const API_SERVICE = 'http://192.168.100.52:9090/api/v1'
-// export const CASESINFO_API = API_SERVICE + '/CasesInfo';
-// export const CASESSUM_API = API_SERVICE + '/CasesSum';
-// export const CASESSTAT_API = API_SERVICE + '/CasesStatistics';
-// export const DAILYCASES_API = API_SERVICE + '/dailyCases';
+export const RECOMMEND_FETCHING = 'RECOMMEND_FETCHING';
+export const RECOMMEND_ERROR = 'RECOMMEND_ERROR';
+export const RECOMMEND_SUCCESS = 'RECOMMEND_SUCCESS';
+
+export const ADVERTISEMENT_FETCHING = 'ADVERTISEMENT_FETCHING';
+export const ADVERTISEMENT_ERROR = 'ADVERTISEMENT_ERROR';
+export const ADVERTISEMENT_SUCCESS = 'ADVERTISEMENT_SUCCESS';
+
+
+// API
+export const HOST = 'http://localhost:8080'
+export const API_SERVICE = HOST + '/api'
+export const INIT_API = API_SERVICE + '/init';
+export const CATEGORY_API = API_SERVICE + '/category';
+export const RECOMMEND_API = API_SERVICE + '/recommend';
+export const ADVERTISEMENT_API = API_SERVICE + '/advertisement';
