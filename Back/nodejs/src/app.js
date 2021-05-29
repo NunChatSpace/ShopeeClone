@@ -1,7 +1,8 @@
 const express = require('express');
 const cors = require('cors');
-const router = require('../src/routes/routes')
-const app = express()
+const router = require('../src/routes/routes');
+const authenRouter = require('../src/routes/authen');
+const app = express();
 
 var corsOptions = {
     origin: 'http://localhost:3000',
@@ -26,7 +27,9 @@ var corsOptions = {
 }
 
 app.use(cors(corsOptions));
+app.use(express.json());
 app.use('/static', express.static( __dirname + '/assets/static'));
-app.use('/api', router)
+app.use('/api', router);
+app.use('/authen', authenRouter);
 
 module.exports = app;

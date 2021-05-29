@@ -59,7 +59,6 @@ export class Recommend extends Component {
       advertisementData = this.props.advertisementReducer.payload.data.data
     }
 
-    console.log(recommendData, advertisementData)
     return (
       <Container>
         <Grid container direction="row" alignItems="center" spacing={1}>

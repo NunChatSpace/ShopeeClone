@@ -49,7 +49,6 @@ export default class Carousel extends Component {
     }
 
     render() {
-        console.log("render Carousel", this.state)
         return (
             <div className="carousel-container">
                 <div className="carousel-wrapper">

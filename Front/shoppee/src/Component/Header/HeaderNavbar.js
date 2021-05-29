@@ -6,7 +6,9 @@ import instagramLogo from '../../assets/icon/instagram-logo.png';
 import lineLogo from '../../assets/icon/line-logo.png';
 import { AiOutlineBell, AiOutlineQuestionCircle } from 'react-icons/ai'
 import { IconContext } from "react-icons";
+import './HeaderNavbar.css'
 import { headerReducer } from "../../Redux/reducers/header.reducer";
+import { Link } from 'react-router-dom';
 
 export class HeaderNavbar extends Component {
   render() {
@@ -32,17 +34,17 @@ export class HeaderNavbar extends Component {
           <Grid container spacing={0} direction="row" justify="flex-start" alignItems="center">
             <Grid item xs={2}>
               <div style={boxStyleWithBorder}>
-                <a style={navbarStyle} >Seller Centre</a>
+                <a className="navbar-text" >Seller Centre</a>
               </div>
             </Grid>
             <Grid item xs={3}>
               <div style={boxStyleWithBorder}>
-                <a style={navbarStyle}>ขายสินค้ากับช็อปปี้</a>
+                <a className="navbar-text">ขายสินค้ากับช็อปปี้</a>
               </div>
             </Grid>
             <Grid item xs={2}>
               <div style={boxStyleWithBorder}>
-                <a style={navbarStyle}>ดาวน์โหลด</a>
+                <a className="navbar-text">ดาวน์โหลด</a>
               </div>
             </Grid>
             <Grid item xs={5}>
@@ -82,7 +84,7 @@ export class HeaderNavbar extends Component {
                 <div style={boxStyle}>
                   <IconContext.Provider value={iconStyle}>
                     <AiOutlineBell />
-                    <label style={navbarStyle}>การแจ้งเตือน</label>
+                    <label className="navbar-text">การแจ้งเตือน</label>
                   </IconContext.Provider>
                 </div>
               </a>
@@ -92,19 +94,19 @@ export class HeaderNavbar extends Component {
                 <div style={boxStyle}>
                   <IconContext.Provider value={iconStyle}>
                     <AiOutlineQuestionCircle />
-                    <label style={navbarStyle}>ช่วยเหลือ</label>
+                    <label className="navbar-text">ช่วยเหลือ</label>
                   </IconContext.Provider>
                 </div>
               </a>
             </Grid>
             <Grid item xs={2}>
               <div style={boxStyleWithBorder}>
-                <a style={navbarStyle}>สมัครใหม่</a>
+                <Link className="navbar-text" to="/register">สมัครใหม่</Link>
               </div>
             </Grid>
             <Grid item xs={2}>
               <div style={boxStyle}>
-                <a style={navbarStyle}>เข้าสู่ระบบ</a>
+                <Link className="navbar-text" to="/login">เข้าสู่ระบบ</Link>
               </div>
             </Grid>
           </Grid>

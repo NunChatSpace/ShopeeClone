@@ -1,4 +1,4 @@
-import { Container, Grid, ListItemAvatar } from '@material-ui/core';
+import { Container, Grid } from '@material-ui/core';
 import React, { Component } from 'react';
 import ScrollMenu from 'react-horizontal-scrolling-menu';
 import Category from './Category';
@@ -39,7 +39,6 @@ const MenuItem = ({ cmp1, cmp2 }) => {
 
 // const component = Array.from(Array(this.props.componentsInfo.length)).map((x, i) => this.toCategory(i, this.props.componentsInfo))
 const Menu = (list) => {
-    console.log(list)
     var components = list.map((el, i) => {
         if (i + 1 == list.length) {
             return (<MenuItem key={i} cmp1={el} cmp2={{ image: "", text: "" }} />)
@@ -97,13 +96,13 @@ export class Categories extends Component {
 
     render() {
         const { selected } = this.state;
-        const defaultSetting = {
+        var defaultSetting = {
             alignCenter: true,
             clickWhenDrag: false,
             dragging: true,
             hideArrows: true,
             hideSingleArrow: true,
-            itemsCount: this.props.componentsInfo.length,
+            itemsCount: 0,
             selected: '0',
             scrollToSelected: false,
             translate: 0,
@@ -113,10 +112,11 @@ export class Categories extends Component {
             inertiascrolling: true,
             slowdownFactor: 10,
         }
-        // const component = Array.from(Array(this.props.componentsInfo.length)).map((x, i) => this.toCategory(i, this.props.componentsInfo))
+        
         var menu = Menu([], '0')
         if (this.props.categoryReducer.payload) {
-            menu = Menu(this.props.categoryReducer.payload.data.data, selected)
+            menu = Menu(this.props.categoryReducer.payload.data.data, selected);
+            defaultSetting.itemsCount = this.props.categoryReducer.payload.data.data;
         }
         return (
             <Container>

@@ -8,16 +8,20 @@ import thunk from "redux-thunk";
 import { Provider } from "react-redux";
 import reducers from "./Redux/reducers";
 import logger from "redux-logger";
+import { BrowserRouter } from 'react-router-dom';
+
 
 var middleware = applyMiddleware(thunk, logger);
 const store = createStore(reducers, middleware)
 ReactDOM.render(
   <Provider store={store}>
-    <React.StrictMode>
-      <App />
-    </React.StrictMode>
+    <BrowserRouter>
+      <React.StrictMode>
+        <App />
+      </React.StrictMode>
+    </BrowserRouter>
   </Provider>
-  ,document.getElementById('root')
+  , document.getElementById('root')
 );
 
 // If you want to start measuring performance in your app, pass a function
