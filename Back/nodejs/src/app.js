@@ -29,7 +29,7 @@ var corsOptions = {
 app.use(cors(corsOptions));
 app.use(express.json());
 app.use('/static', express.static( __dirname + '/assets/static'));
-app.use('/api', router);
+app.use('/api/view', router);
 app.use('/authen', authenRouter);
 
 module.exports = app;

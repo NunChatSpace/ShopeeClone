@@ -4,6 +4,9 @@ import {
     LOGIN_REQUESTING,
     LOGIN_ERROR,
     LOGIN_SUCCESS,
+    LOGIN_DIALOG_CLOSE,
+    LOGIN_DIALOG_DISPLAY,
+    LOGIN_INITIALIZE,
     REQUESTLOGIN_API
 } from '../../constants/constant'
 
@@ -21,9 +24,20 @@ export const setLoginStatetoSuccess = (payload) => ({
     payload
 });
 
+export const setDialogDisplayingStateToClose = () => ({
+    type: LOGIN_DIALOG_CLOSE
+});
+
+export const setDialogDisplayingStateToDisplay = (message) => ({
+    type: LOGIN_DIALOG_DISPLAY,
+    message
+});
+
+export const setLoginStatetoInitialize = () => ({
+    type: LOGIN_INITIALIZE
+})
+
 export const loginRequest = (data) => {
-    debugger
-    console.log("loginRequest", data)
     return async dispatch => {
         try {
             dispatch(setLoginStatetoRequesting());
@@ -43,6 +57,37 @@ export const loginRequest = (data) => {
             } else {
                 dispatch(setLoginStatetoError(result));
             }
+        } catch (error) {
+            dispatch(setLoginStatetoError(error.response));
+        }
+    }
+}
+
+
+export const closeDialog = () => {
+    return async dispatch => {
+        try {
+            dispatch(setDialogDisplayingStateToClose());
+        } catch (error) {
+            dispatch(setLoginStatetoError(error));
+        }
+    }
+}
+
+export const displayDialog = (data) => {
+    return async dispatch => {
+        try {
+            dispatch(setDialogDisplayingStateToDisplay(data));
+        } catch (error) {
+            dispatch(setLoginStatetoError(error.response));
+        }
+    }
+}
+
+export const backToInitial = () => {
+    return async dispatch => {
+        try {
+            dispatch(setLoginStatetoInitialize());
         } catch (error) {
             dispatch(setLoginStatetoError(error));
         }

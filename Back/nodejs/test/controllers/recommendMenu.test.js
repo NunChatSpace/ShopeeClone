@@ -1,7 +1,7 @@
 const { assert } = require('chai')
 const { after, before, describe, it } = require('mocha')
 
-const { initRecommendData, getRecommendMenu, clearRecommendData } = require('../../src/controllers/recommendMenu.controller')
+const { initRecommendData, getRecommendMenu, clearRecommendData } = require('../../src/controllers/view/recommendMenu.controller')
 
 describe('Test recommendMenu.controller', () => {
     before(async () => {
@@ -9,10 +9,9 @@ describe('Test recommendMenu.controller', () => {
     })
 
     describe('init data', () => {
-        it('Should contains 10 inserted data', done = async () => {
+        it('Should return ok', done = async () => {
             var result = await initRecommendData();
             assert.isTrue(result.result.ok == 1, "result.result.ok = " + result.result.ok);
-            assert.isTrue(result.result.n == 10, "result.result.n = " + result.result.n);
             done();
         })
     })

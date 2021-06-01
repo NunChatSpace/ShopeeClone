@@ -10,7 +10,7 @@ export class Header extends Component {
         return (
             <div style={{ background: "linear-gradient(#f53d2d, #f63)" }}>
                 <Container>
-                    <HeaderNavbar />
+                    <HeaderNavbar/>
                     <HeaderSearchPanel />
                 </Container>
             </div>

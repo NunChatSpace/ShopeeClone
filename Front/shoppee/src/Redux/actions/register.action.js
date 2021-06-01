@@ -51,14 +51,15 @@ export const registerRequest = (data) => {
                     'Access-Control-Allow-Headers': 'access-control-allow-origin, Origin, Content-Type, Accept, Content-Length, Authorization',
                 }
             });
-
+            
             if (result.data.status === 201) {
                 dispatch(setRegisterStatetoSuccess(result));
             } else {
                 dispatch(setRegisterStatetoError(result));
             }
         } catch (error) {
-            dispatch(setRegisterStatetoError(error));
+            debugger
+            dispatch(setRegisterStatetoError(error.response));
         }
     }
 }

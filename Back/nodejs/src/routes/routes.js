@@ -1,7 +1,7 @@
 const express = require('express');
-const categoryController = require('../controllers/categoryMenu.controller')
-const recommendController = require('../controllers/recommendMenu.controller')
-const advertisementController = require('../controllers/advertisement.controller')
+const categoryController = require('../controllers/view/categoryMenu.controller')
+const recommendController = require('../controllers/view/recommendMenu.controller')
+const advertisementController = require('../controllers/view/advertisement.controller')
 const router = express.Router();
 
 router.get('/', (req, res) => {

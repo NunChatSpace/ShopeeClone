@@ -6,7 +6,9 @@ import appleLogin from '../../assets/icon/apple.png'
 import { Link } from 'react-router-dom';
 import HeaderWhite from '../Header/HeaderWhite';
 import { connect } from 'react-redux';
-import {loginRequest} from '../../Redux/actions/login.action'
+import { loginRequest, closeDialog, displayDialog, backToInitial } from '../../Redux/actions/login.action';
+import Cookies from 'js-cookie';
+
 export class Login extends Component {
     constructor(props) {
         super(props)
@@ -18,30 +20,39 @@ export class Login extends Component {
         }
     }
 
+    componentWillUnmount() {
+        this.props.backToInitial()
+    }
+
     login = (data) => {
         if (data.username && data.password) {
             this.props.loginRequest(data);
-        } else if (this.state.loginFailMessage) {
-            console.log(data)
-            this.setState({
-                displayErrorDialog: true
-            })
         } else {
-            this.setState({
-                loginFailMessage: "Please input username or password",
-                displayErrorDialog: true
-            })
+            this.props.displayDialog("Please input username or password")
         }
 
     }
 
     closeDialog = () => {
-        this.setState({
-            displayErrorDialog: false
-        })
+        this.props.closeDialog()
+    }
+
+    displayDialog = (data) => {
+        this.props.displayDialog(data)
     }
 
     render() {
+        if(this.props.loginReducer.payload){
+            const cookieData = JSON.stringify({
+                username: this.props.loginReducer.payload.data.username,
+                token: this.props.loginReducer.payload.data.token
+            })
+            Cookies.set('userSession', cookieData, {
+                expires: 1
+            })
+            
+            this.props.history.push('/')
+        }
         return (
             <>
                 <Container>
@@ -168,15 +179,15 @@ export class Login extends Component {
                     </Container>
                 </div>
                 <Dialog
-                    open={this.state.displayErrorDialog}
-                    onClose={this.closeDialog}
+                    open={this.props.loginReducer.isDisplay}
+                    onClose={() => this.closeDialog()}
                 >
                     <DialogContent>
                         <DialogContentText>
-                            {this.state.loginFailMessage}
+                            {this.props.loginReducer.dialogMessage}
                         </DialogContentText>
                         <DialogActions>
-                            <Button onClick={this.closeDialog} color="primary">
+                            <Button onClick={() => this.closeDialog()} color="primary">
                                 OK
                             </Button>
                         </DialogActions>
@@ -192,7 +203,10 @@ export class Login extends Component {
 const mapStateToProps = ({ loginReducer }) => ({ loginReducer });
 
 const mapDispatchToProps = {
-    loginRequest
+    loginRequest,
+    closeDialog, 
+    displayDialog, 
+    backToInitial
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);

@@ -1,50 +1,78 @@
 const chai = require('chai')
 const chaiHttp = require('chai-http')
-const {after, before, describe, it} = require('mocha')
-
-const server = require('../../src/server')
+const { after, before, describe, it } = require('mocha')
+const { initUserData, clearUserData } = require('../../src/controllers/view/user.controller');
+const server = require('../../src/serverTest')
 
 chai.use(chaiHttp)
 chai.should()
 
 describe('Test authen', () => {
-    before(done => {
-        // Do something here before test
-        done()
+    before(async() => {
+        await clearUserData()
+        await initUserData()
     })
 
-    describe('GET /authen/login', () => {
+    describe('POST /authen/login', () => {
         it('it should have attributes', done => {
             chai
-            .request(server)
-            .get('/authen/login')
-            .end((req, res) => {
-                res.should.have.status(200)
-                res.body.should.have.property('status')
-                res.body.should.have.property('token')
-                res.body.should.have.property('expiresIn')
-                res.body.should.have.property('username')
-                done()
-            })
+                .request(server)
+                .post('/authen/login')
+                .send({username: "nunz9684", password: "123456789"})
+                .end((req, res) => {
+                    res.should.have.status(200)
+                    res.body.should.have.property('status')
+                    res.body.should.have.property('token')
+                    res.body.should.have.property('expiresIn')
+                    res.body.should.have.property('username')
+                    done()
+                })
         })
     })
 
-    describe('GET /authen/register', () => {
+    describe('POST /authen/login', () => {
+        it('it should return 401', done => {
+            chai
+                .request(server)
+                .post('/authen/login')
+                .send({username: "ItsAlwaysfailed", password: "ItsAlwaysfailed"})
+                .end((req, res) => {
+                    res.should.have.status(401)
+                    res.body.should.have.property('message')
+                    done()
+                })
+        })
+    })
+
+    describe('POST /authen/register', () => {
         it('it should have message "Success"', done => {
             chai
-            .request(server)
-            .get('/authen/register')
-            .end((req, res) => {
-                res.should.have.status(201)
-                res.body.should.have.property('message').eql('Create user success.')
-                res.body.should.have.property('message')
-                done()
-            })
+                .request(server)
+                .post('/authen/register')
+                .send({username: "ItsAlwaysSuccess", password: "ItsAlwaysSuccess"})
+                .end((req, res) => {
+                    res.should.have.status(201)
+                    res.body.should.have.property('message').eql('Create user success')
+                    done()
+                })
         })
     })
 
-    after(done => {
-        // Do something here after test
-        done()
+    describe('POST /authen/register', () => {
+        it('it should return 401', done => {
+            chai
+                .request(server)
+                .post('/authen/register')
+                .send({username: "nunz9684", password: "123456789"})
+                .end((req, res) => {
+                    res.should.have.status(401)
+                    res.body.should.have.property('message').eql('User already exist')
+                    done()
+                })
+        })
+    })
+
+    after(async() =>{
+        await clearUserData()
     })
 })

@@ -1,5 +1,5 @@
-const { model } = require('../Database/advertisement')
-const data = require('../Database/data/advertisement')
+const { model } = require('../../Database/advertisement')
+const data = require('../../Database/data/advertisement')
 
 const getAdvertisement = async () => {
     var cursor = await model.find();
