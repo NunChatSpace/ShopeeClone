@@ -6,7 +6,7 @@
   - DB: recommend
 - [x] /api/view/advertisement
   - DB: advertisement
-- [ ] /api/view/itemlist
+- [x] /api/view/itemlist
   - Db: itemlist
 
 ### API: /authen/
