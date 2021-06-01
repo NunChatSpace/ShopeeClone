@@ -29,18 +29,26 @@ export const REGISTER_SUCCESS = 'REGISTER_SUCCESS';
 export const REGISTER_DIALOG_DISPLAY = 'REGISTER_DIALOG_DISPLAY';
 export const REGISTER_DIALOG_CLOSE = 'REGISTER_DIALOG_CLOSE';
 
+export const ITEMLIST_REQUESTING = 'ITEMLIST_REQUESTING';
+export const ITEMLIST_ERROR = 'ITEMLIST_ERROR';
+export const ITEMLIST_SUCCESS = 'ITEMLIST_SUCCESS';
+
+
 // Constant value
 export const REGISTER_STATUS_SUCCESS = 201;
 
 // API
 export const HOST = 'http://localhost:8080'
 
-export const API_SERVICE = HOST + '/api'
+// View
+export const API_SERVICE = HOST + '/api/view';
 export const INIT_API = API_SERVICE + '/init';
 export const CATEGORY_API = API_SERVICE + '/category';
 export const RECOMMEND_API = API_SERVICE + '/recommend';
 export const ADVERTISEMENT_API = API_SERVICE + '/advertisement';
+export const ITEMLIST_API = API_SERVICE + '/itemlist';
 
+// Authentication
 export const API_AUTHEN_SERVICE = HOST + '/authen'
 export const REQUESTLOGIN_API = API_AUTHEN_SERVICE + '/login';
 export const REQUESTREGISTER_API = API_AUTHEN_SERVICE + '/register';

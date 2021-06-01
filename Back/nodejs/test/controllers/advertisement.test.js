@@ -8,10 +8,11 @@ describe('Test advertisement.controller', () => {
         await clearAdvertisementData();
     })
 
-    describe('init data', () => {
+    describe('init data', done = () => {
         it('Should return ok', async () => {
             var result = await initAdvertisementData();
             assert.isTrue(result.result.ok == 1, "result.result.ok = " + result.result.ok);
+            done();
         })
     })
 
@@ -26,10 +27,11 @@ describe('Test advertisement.controller', () => {
         await initAdvertisementData();
     })
 
-    describe('getAdvertisement', () => {
+    describe('getAdvertisement', done = () => {
         it('Should contains data', async () => {
             var data = await getAdvertisement();
             assert.isTrue(data.length > 0, "data.length = " + data.length);
+            done();
         })
     })
 

@@ -5,7 +5,7 @@ const {
     login,
     getUserData,
     initUserData,
-    clearUserData 
+    clearUserData
 } = require('../../src/controllers/view/user.controller')
 
 
@@ -37,6 +37,7 @@ describe('Test user.controller', () => {
         it('Should contains data', done = async () => {
             var data = await getUserData();
             assert.isTrue(data.length > 0, "data.length = " + data.length);
+            done();
         })
     })
 

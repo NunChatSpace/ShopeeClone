@@ -2,11 +2,12 @@ const { model } = require('../../Database/recommendMenu')
 const data = require('../../Database/data/recommendMenu.json')
 
 const getRecommendMenu = async () => {
-    var cursor = await model.find();
+    var cursor = await model.find({});
     return cursor;
 }
 
 const initRecommendData = async () => {
+    await clearRecommendData()
     var promise = new Promise((resolve, reject) => {
         model.collection.insertMany(data, function (err, docs) {
             if (err) {
@@ -23,7 +24,8 @@ const initRecommendData = async () => {
 const clearRecommendData = async () => {
     var val = await getRecommendMenu();
     if (val) {
-        model.collection.deleteMany({});
+        console.log("clearRecommendData")
+        await model.collection.deleteMany({});
     }
 }
 

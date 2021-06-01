@@ -5,7 +5,7 @@ import recommendReducer from './recommend.reducer';
 import advertisementReducer from './advertisement.reducer';
 import loginReducer from './login.reducer';
 import registerReducer from './register.reducer';
-
+import itemlistReducer from './itemlist.reducer';
 
 export default combineReducers({
     headerReducer,
@@ -13,5 +13,6 @@ export default combineReducers({
     recommendReducer,
     advertisementReducer,
     loginReducer,
-    registerReducer
+    registerReducer,
+    itemlistReducer
 })

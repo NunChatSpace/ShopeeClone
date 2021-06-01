@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const itemlistModel = require('../models/itemlistSchema');
+const itemlistModel = require('../models/itemlistModel');
 
 const model = mongoose.model("itemlist", itemlistModel);
 module.exports = {

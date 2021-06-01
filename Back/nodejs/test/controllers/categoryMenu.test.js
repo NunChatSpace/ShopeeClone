@@ -16,7 +16,7 @@ describe('Test categoryMenu.controller', () => {
         })
     })
 
-    before(async () => {
+    after(async () => {
         await clearCategoryData();
     })
 });

@@ -16,6 +16,9 @@
 ### API: /api/action/{Page}/{action}
 - [ ] TBD
 
+### MIDDLE WARE
+- JWT Authentication
+
 ### DATABASE
 - itemlist
     ```

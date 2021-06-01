@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 
-
 const itemlistSchema = new mongoose.Schema({
     id: {
         type: String,
@@ -21,6 +20,14 @@ const itemlistSchema = new mongoose.Schema({
         type: Number,
         min: 1,
         max: 10,
+        require: true
+    },
+    price: {
+        type: Number,
+        require: true
+    },
+    soleCount : {
+        type: Number,
         require: true
     },
     url: {

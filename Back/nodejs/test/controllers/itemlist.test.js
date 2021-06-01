@@ -1,45 +1,48 @@
 const { assert } = require('chai')
 const { after, before, describe, it } = require('mocha')
 const {
-    getItemlistData,
-    initItemlistData,
-    clearItemlistData 
+    getItemList,
+    initItemList,
+    clearItemList 
 } = require('../../src/controllers/view/itemlist.controller')
 
 
 describe('Test itemlist.controller', () => {
     before(async () => {
-        await clearUserData();
+        await clearItemList();
     })
 
-    describe('init data', () => {
+    describe('init data', done =  () => {
         it('Should return ok', async () => {
-            var result = await initItemlistData();
+            var result = await initItemList();
             assert.isTrue(result.result.ok == 1, "result.result.ok = " + result.result.ok);
+            done();
         })
     })
 
-    before(async () => {
-        await clearUserData();
+    after(async () => {
+        await clearItemList();
     })
 });
 
 
 describe('Test itemlist.controller', () => {
     before(async () => {
-        await initItemlistData();
+        await clearItemList();
+        await initItemList();
     })
 
-    describe('getItemlistData', () => {
-        it('Should return itemlist', async () => {
-            var result = await getItemlistData();
-            assert.isTrue(result.itemlist != undefined, "result.itemlist = " + result.itemlist);
-            assert.isTrue(result.itemlist[0].src != undefined, "result.itemlist[0].src = " + result.itemlist[0].src);
-            assert.isTrue(result.itemlist[0].url != undefined, "result.itemlist[0].url = " + result.itemlist[0].url);
+    describe('getItemlist', done =  () => {
+        it('Should return data', async () => {
+            var result = await getItemList();
+            assert.isTrue(result != undefined, "result.data = " + result);
+            assert.isTrue(result[0].src != undefined, "result.data[0].src = " + result[0].src);
+            assert.isTrue(result[0].url != undefined, "result.data[0].url = " + result[0].url);
+            done();
         })
     })
 
-    before(async () => {
-        await clearUserData();
+    after(async () => {
+        await clearItemList();
     })
 });

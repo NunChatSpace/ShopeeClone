@@ -72,12 +72,12 @@ const login = async (req) => {
 }
 
 const getUserData = async () => {
-    var cursor = await model.find();
-    console.log(cursor)
+    var cursor = await model.find({});
     return cursor;
 }
 
 const initUserData = async () => {
+    await clearUserData()
     var promise = new Promise((resolve, reject) => {
         model.collection.insertMany(data.userData, function (err, docs) {
             if (err) {
@@ -93,9 +93,9 @@ const initUserData = async () => {
 // Setting environment for test
 const clearUserData = async () => {
     var val = await getUserData();
-
     if (val) {
-        model.collection.deleteMany({});
+        console.log("clearUserData")
+        await model.collection.deleteMany({});
     }
 }
 

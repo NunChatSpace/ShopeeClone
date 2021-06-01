@@ -1,14 +1,23 @@
 const { model } = require('../../Database/itemlist')
 const data = require('../../Database/data/itemlist')
 
-const getItemList = async () => {
-    var cursor = await model.find();
-    return cursor;
+const getItemList = () => {
+    var promise = new Promise((resolve, reject) => {
+        model.find({}).then((result, err) => {
+            if (err) {
+                resolve(err);
+            } else {
+                resolve(result);
+            }
+        });
+    })
+    return promise;
 }
 
 const initItemList = async () => {
+    await clearItemList()
     var promise = new Promise((resolve, reject) => {
-        model.collection.insertMany(data.itemlist, function (err, docs) {
+        model.collection.insertMany(data.itemListData, function (err, docs) {
             if (err) {
                 resolve(err);
             } else {
@@ -23,7 +32,8 @@ const initItemList = async () => {
 const clearItemList = async () => {
     var val = await getItemList();
     if (val) {
-        model.collection.deleteMany({});
+        console.log("clearItemList")
+        await model.collection.deleteMany({});
     }
 }
 

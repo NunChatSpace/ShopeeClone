@@ -1,4 +1,4 @@
-const { expect } = require('chai')
+const { expect, assert } = require('chai')
 const chai = require('chai')
 const chaiHttp = require('chai-http')
 const {after, before, describe, it} = require('mocha')
@@ -69,16 +69,23 @@ describe('Test Routing with normal flow', () => {
         })
     })
 
-    describe('GET /api/view/getItemList', ()=> {
-        it('it should have message "Success"', done => {
+    describe('GET /api/view/itemlist', ()=> {
+        it('it should have message "Success" and Property is not undefined', done => {
             chai
             .request(server)
-            .get('/api/view/getItemList')
+            .get('/api/view/itemlist')
             .end((req, res) => {
                 res.should.have.status(200)
                 res.body.should.have.property('status').eql('Success')
-                res.body.should.have.property('itemlist').property('src')
-                res.body.should.have.property('itemlist').property('url')
+                res.body.should.have.property('count')
+                console.log(res.body.data)
+                assert.isTrue(res.body.data != undefined, "res.body.data != " + res.body.data);
+                assert.isTrue(res.body.data[0].id != undefined, "res.body.data.id = " + res.body.data[0].id );
+                assert.isTrue(res.body.data[0].name != undefined, "res.body.data.id = " + res.body.data[0].name );
+                assert.isTrue(res.body.data[0].src != undefined, "res.body.data.id = " + res.body.data[0].src );
+                assert.isTrue(res.body.data[0].tagsEnum != undefined, "res.body.data.id = " + res.body.data[0].tagsEnum );
+                assert.isTrue(res.body.data[0].imgCount != undefined, "res.body.data.id = " + res.body.data[0].imgCount );
+                assert.isTrue(res.body.data[0].url != undefined, "res.body.data.id = " + res.body.data[0].url );
                 done()
             })
         })

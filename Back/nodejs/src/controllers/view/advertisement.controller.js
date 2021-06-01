@@ -2,11 +2,12 @@ const { model } = require('../../Database/advertisement')
 const data = require('../../Database/data/advertisement')
 
 const getAdvertisement = async () => {
-    var cursor = await model.find();
+    var cursor = await model.find({});
     return cursor;
 }
 
 const initAdvertisementData = async () => {
+    await clearAdvertisementData();
     var promise = new Promise((resolve, reject) => {
         model.collection.insertMany(data.dataAdvertisement, function (err, docs) {
             if (err) {
@@ -24,7 +25,8 @@ const clearAdvertisementData = async () => {
     var val = await getAdvertisement();
     
     if (val) {
-        model.collection.deleteMany({});
+        console.log('clearAdvertisementData')
+        await model.collection.deleteMany({});
     }
 }
 

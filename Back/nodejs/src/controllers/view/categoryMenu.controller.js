@@ -2,11 +2,12 @@ const { model } = require('../../Database/categoryMenu')
 const data = require('../../Database/data/categoryMenu.json')
 
 const getCategoryMenu = async () => {
-    var cursor = await model.find();
+    var cursor = await model.find({});
     return cursor;
 }
 
 const initCategoryData = async () => {
+    await clearCategoryData()
     var promise = new Promise((resolve, reject) => {
         model.collection.insertMany(data, function (err, docs) {
             if (err) {
@@ -24,7 +25,8 @@ const clearCategoryData = async () => {
     var val = await getCategoryMenu();
     
     if (val) {
-        model.collection.deleteMany({});
+        console.log("clearCategoryData")
+        await model.collection.deleteMany({});
     }
 }
 
