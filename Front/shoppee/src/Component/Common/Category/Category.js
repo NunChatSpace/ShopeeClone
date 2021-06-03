@@ -1,6 +1,6 @@
 import { Grid } from '@material-ui/core';
 import React, { Component } from 'react';
-
+import './Category.css'
 export default class Category extends Component {
     render() {
         const imgStyle = {
@@ -13,7 +13,7 @@ export default class Category extends Component {
         }
 
         return (
-            <a>
+            <a className="box">
                 <Grid container direction="row" alignItems="center" justify="center" spacing={1} style={this.props.style ? this.props.style : {}}>
                     <Grid item xs={8}>
                         <img src={this.props.image} style={imgStyle} alt={this.props.text} />

@@ -30,7 +30,6 @@ export default (state = initialState, { type, payload, message }) => {
         case LOGIN_REQUESTING:
             return { ...state, isError: false, isSuccess: false, isLogin: true, isDisplay: false }
         case LOGIN_ERROR:
-            console.log(payload.data)
             return { ...state, isError: true, isSuccess: false, isLogin: false, isDisplay: true, dialogMessage: payload.data.message }
         case LOGIN_SUCCESS:
             return { ...state, isError: false, isSuccess: false, isLogin: true, isDisplay: false, payload: payload }

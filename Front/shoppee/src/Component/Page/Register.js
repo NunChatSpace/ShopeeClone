@@ -25,7 +25,6 @@ export class Register extends Component {
         if (data.username && data.password) {
             this.props.registerRequest(data);
         } else {
-            // console.log("Please input username or password")
             this.props.displayDialog("Please input username or password")
         }
 
