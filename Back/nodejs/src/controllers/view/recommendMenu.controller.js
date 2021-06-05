@@ -24,7 +24,6 @@ const initRecommendData = async () => {
 const clearRecommendData = async () => {
     var val = await getRecommendMenu();
     if (val) {
-        console.log("clearRecommendData")
         await model.collection.deleteMany({});
     }
 }

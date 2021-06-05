@@ -1,7 +1,7 @@
 import {
-    ITEMLIST_FETCHING,
-    ITEMLIST_ERROR,
-    ITEMLIST_SUCCESS
+    BUY_FETCHING,
+    BUY_ERROR,
+    BUY_FETCH_SUCCESS
 } from "../../constants/constant";
 
 const initialState = {
@@ -13,11 +13,11 @@ const initialState = {
 
 export default (state = initialState, { type, payload }) => {
     switch (type) {
-        case ITEMLIST_FETCHING:
+        case BUY_FETCHING:
             return { ...state, isFetching: true, isError: false, isSuccess: false }
-        case ITEMLIST_ERROR:
+        case BUY_ERROR:
             return { ...state, isFetching: false, isError: true, isSuccess: false }
-        case ITEMLIST_SUCCESS:
+        case BUY_FETCH_SUCCESS:
             return { ...state, isFetching: false, isError: false, isSuccess: true, payload: payload }
         default:
             return state

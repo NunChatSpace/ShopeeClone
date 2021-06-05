@@ -29,10 +29,15 @@ export const REGISTER_SUCCESS = 'REGISTER_SUCCESS';
 export const REGISTER_DIALOG_DISPLAY = 'REGISTER_DIALOG_DISPLAY';
 export const REGISTER_DIALOG_CLOSE = 'REGISTER_DIALOG_CLOSE';
 
-export const ITEMLIST_REQUESTING = 'ITEMLIST_REQUESTING';
+export const ITEMLIST_FETCHING = 'ITEMLIST_FETCHING';
 export const ITEMLIST_ERROR = 'ITEMLIST_ERROR';
 export const ITEMLIST_SUCCESS = 'ITEMLIST_SUCCESS';
 
+export const BUY_FETCHING = 'BUY_FETCHING';
+export const BUY_ERROR = 'BUY_ERROR';
+export const BUY_FETCH_SUCCESS = 'BUY_FETCH_SUCCESS';
+export const BUY_DIALOG_DISPLAY = 'BUY_DIALOG_DISPLAY';
+export const BUY_DIALOG_CLOSE = 'BUY_DIALOG_CLOSE';
 
 // Constant value
 export const REGISTER_STATUS_SUCCESS = 201;
@@ -47,6 +52,7 @@ export const CATEGORY_API = API_SERVICE + '/category';
 export const RECOMMEND_API = API_SERVICE + '/recommend';
 export const ADVERTISEMENT_API = API_SERVICE + '/advertisement';
 export const ITEMLIST_API = API_SERVICE + '/itemlist';
+export const BUY_API = API_SERVICE + '/buy';
 
 // Authentication
 export const API_AUTHEN_SERVICE = HOST + '/authen'

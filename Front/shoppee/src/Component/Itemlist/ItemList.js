@@ -11,7 +11,7 @@ export class ItemList extends Component {
 
     toItem = (data) => {
         return (
-            <Item src={data.src} name={data.name} price={data.price} soleCount={data.soleCount}/>
+            <Item data={data}/>
         )
     }
 

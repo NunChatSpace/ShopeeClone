@@ -3,6 +3,8 @@ const categoryController = require('../controllers/view/categoryMenu.controller'
 const recommendController = require('../controllers/view/recommendMenu.controller')
 const advertisementController = require('../controllers/view/advertisement.controller')
 const itemlistController = require('../controllers/view/itemlist.controller')
+const buyController = require('../controllers/view/buy.controller')
+const userController = require('../controllers/view/user.controller')
 const router = express.Router();
 
 router.get('/', (req, res) => {
@@ -18,6 +20,7 @@ router.get('/init', (req, res) => {
     recommendController.initRecommendData();
     advertisementController.initAdvertisementData();
     itemlistController.initItemList();
+    userController.initUserData();
     res.status(200).json({
         status: "Success"
     })
@@ -56,6 +59,14 @@ router.get('/itemlist', async (req, res)=> {
     res.status(200).json({
         status: "Success",
         count: dat.length,
+        data: dat
+    });
+})
+
+router.get('/buy', async (req, res)=> {
+    var dat = await buyController.getItemList(req.query);
+    res.status(200).json({
+        status: "Success",
         data: dat
     });
 })

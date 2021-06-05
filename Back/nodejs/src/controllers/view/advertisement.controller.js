@@ -25,7 +25,6 @@ const clearAdvertisementData = async () => {
     var val = await getAdvertisement();
     
     if (val) {
-        console.log('clearAdvertisementData')
         await model.collection.deleteMany({});
     }
 }

@@ -32,7 +32,6 @@ const initItemList = async () => {
 const clearItemList = async () => {
     var val = await getItemList();
     if (val) {
-        console.log("clearItemList")
         await model.collection.deleteMany({});
     }
 }

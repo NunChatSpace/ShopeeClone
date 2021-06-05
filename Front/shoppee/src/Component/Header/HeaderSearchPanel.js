@@ -6,6 +6,7 @@ import { headerReducer } from "../../Redux/reducers/header.reducer";
 import { BiCart } from 'react-icons/bi';
 import { AiOutlineSearch } from 'react-icons/ai';
 import { IconContext } from "react-icons";
+import { Link } from 'react-router-dom';
 
 export class HeaderSearchPanel extends Component {
     render() {
@@ -26,7 +27,9 @@ export class HeaderSearchPanel extends Component {
             <Grid container>
                 <Grid container direction="row" alignItems="center">
                     <Grid item xs={2}>
-                        <img src={shopee} style={{ width: 162, height: 50 }}></img>
+                        <Link to="/" style={{ textDecoration: 'none' }}>
+                            <img src={shopee} style={{ width: 162, height: 50 }}></img>
+                        </Link>
                     </Grid>
                     <Grid item xs={9}>
                         <Grid item xs={12}>

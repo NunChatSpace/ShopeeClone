@@ -1,0 +1,20 @@
+.item-name-panel {
+    display: -webkit-box;
+    text-overflow: ellipsis;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    font-weight: 500;
+    margin: 0;
+    vertical-align: sub;
+    max-height: 3rem;
+    line-height: 1.5rem;
+    overflow: hidden;
+    max-width: 41.5625rem;
+    font-size: 1.25rem;
+    word-wrap: break-word;
+}
+
+.rating-panel {
+    display: flex;
+    margin-top: 15px;
+}

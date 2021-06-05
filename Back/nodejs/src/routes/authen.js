@@ -1,6 +1,6 @@
 const express = require('express');
 const authenRouter = express.Router();
-const userController = require('../controllers/view/user.controller')
+const userController = require('../controllers/authen/user.authen')
 
 authenRouter.post('/login', async (req, res) => {
     var response = await userController.login(req);

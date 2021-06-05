@@ -8,7 +8,15 @@
   - DB: advertisement
 - [x] /api/view/itemlist
   - Db: itemlist
-
+- [ ] /api/view/buy
+  - Body: 
+    ```
+        {
+            "id": itemlist.id
+        }
+    ```
+  - Db: itemlist
+  
 ### API: /authen/
 - [x] /authen/login
 - [x] /authen/register

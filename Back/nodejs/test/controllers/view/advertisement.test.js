@@ -1,7 +1,7 @@
 const { assert } = require('chai')
 const { after, before, describe, it } = require('mocha')
 
-const {initAdvertisementData, getAdvertisement, clearAdvertisementData } = require('../../src/controllers/view/advertisement.controller')
+const {initAdvertisementData, getAdvertisement, clearAdvertisementData } = require('../../../src/controllers/view/advertisement.controller')
 
 describe('Test advertisement.controller', () => {
     before(async () => {
@@ -16,7 +16,7 @@ describe('Test advertisement.controller', () => {
         })
     })
 
-    before(async () => {
+    after(async () => {
         await clearAdvertisementData();
     })
 });

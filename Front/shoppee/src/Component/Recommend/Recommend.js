@@ -42,30 +42,28 @@ export class Recommend extends Component {
     }
 
     return (
-      <Container>
-        <Grid container direction="row" alignItems="center" spacing={1}>
-          <Grid item xs={12} sm={8}>
-            <Carousel>
-              {Array.from(Array(advertisementData.length)).map((x, i) => this.toAdvertisement(advertisementData[i], imgStyle))}
-            </Carousel>
-          </Grid>
-          <Grid item xs={12} sm={4}>
-            <Grid container direction="row" alignItems="center">
-              <Grid item xs={6} sm={12}>
-                <img src={"http://localhost:8080/static/advertisement/ad_7.jpg"} style={imgStyle} alt={"ad_7"} />
-              </Grid>
-              <Grid item xs={6} sm={12}>
-                <img src={"http://localhost:8080/static/advertisement/ad_8.jpg"} style={imgStyle} alt={"ad_8"} />
-              </Grid>
+      <Grid container direction="row" alignItems="center" spacing={1}>
+        <Grid item xs={12} sm={8}>
+          <Carousel>
+            {Array.from(Array(advertisementData.length)).map((x, i) => this.toAdvertisement(advertisementData[i], imgStyle))}
+          </Carousel>
+        </Grid>
+        <Grid item xs={12} sm={4}>
+          <Grid container direction="row" alignItems="center">
+            <Grid item xs={6} sm={12}>
+              <img src={"http://localhost:8080/static/advertisement/ad_7.jpg"} style={imgStyle} alt={"ad_7"} />
             </Grid>
-          </Grid>
-          <Grid item xs={12}>
-            <Grid container direction="row" alignItems="center" spacing={2}>
-              {Array.from(Array(recommendData.length)).map((x, i) => this.toRecommend(recommendData[i]))}
+            <Grid item xs={6} sm={12}>
+              <img src={"http://localhost:8080/static/advertisement/ad_8.jpg"} style={imgStyle} alt={"ad_8"} />
             </Grid>
           </Grid>
         </Grid>
-      </Container>
+        <Grid item xs={12}>
+          <Grid container direction="row" alignItems="center" spacing={2}>
+            {Array.from(Array(recommendData.length)).map((x, i) => this.toRecommend(recommendData[i]))}
+          </Grid>
+        </Grid>
+      </Grid>
     );
   }
 }

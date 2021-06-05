@@ -6,6 +6,7 @@ import advertisementReducer from './advertisement.reducer';
 import loginReducer from './login.reducer';
 import registerReducer from './register.reducer';
 import itemlistReducer from './itemlist.reducer';
+import buyReducer from './buy.reducer';
 
 export default combineReducers({
     headerReducer,
@@ -14,5 +15,6 @@ export default combineReducers({
     advertisementReducer,
     loginReducer,
     registerReducer,
-    itemlistReducer
+    itemlistReducer,
+    buyReducer
 })

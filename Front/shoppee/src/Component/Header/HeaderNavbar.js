@@ -4,10 +4,10 @@ import { connect } from 'react-redux';
 import facebookLogo from '../../assets/icon/facebook-logo.png';
 import instagramLogo from '../../assets/icon/instagram-logo.png';
 import lineLogo from '../../assets/icon/line-logo.png';
-import { AiOutlineBell, AiOutlineQuestionCircle } from 'react-icons/ai'
+import { AiOutlineBell, AiOutlineQuestionCircle } from 'react-icons/ai';
+import { BiUserCircle } from 'react-icons/bi';
 import { IconContext } from "react-icons";
 import './HeaderNavbar.css'
-import { headerReducer } from "../../Redux/reducers/header.reducer";
 import { Link } from 'react-router-dom';
 import Cookies from 'js-cookie';
 
@@ -41,7 +41,7 @@ export class HeaderNavbar extends Component {
             <a>
               <div style={boxStyle}>
                 <IconContext.Provider value={iconStyle}>
-                  <AiOutlineQuestionCircle />
+                  <BiUserCircle />
                   <label className="navbar-text">{user.username}</label>
                 </IconContext.Provider>
               </div>

@@ -1,13 +1,13 @@
 import axios from "axios";
 import { 
-    ITEMLIST_REQUESTING,
+    ITEMLIST_FETCHING,
     ITEMLIST_ERROR,
     ITEMLIST_SUCCESS, 
     ITEMLIST_API
 } from "../../constants/constant";
 
-export const setItemListStateToRequesting = () => ({
-    type: ITEMLIST_REQUESTING
+export const setItemListStateToFetching = () => ({
+    type: ITEMLIST_FETCHING
 });
 
 export const setItemListStateToError = () => ({
@@ -23,7 +23,7 @@ export const setItemListStateToSuccess = (payload) => ({
 export const loadItemList = () => {
     return async dispatch => {
         try {
-            dispatch(setItemListStateToRequesting());
+            dispatch(setItemListStateToFetching());
             let result = await axios({
                 baseURL: ITEMLIST_API,
                 method: 'GET',

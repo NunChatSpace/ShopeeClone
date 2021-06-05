@@ -25,7 +25,6 @@ const clearCategoryData = async () => {
     var val = await getCategoryMenu();
     
     if (val) {
-        console.log("clearCategoryData")
         await model.collection.deleteMany({});
     }
 }
